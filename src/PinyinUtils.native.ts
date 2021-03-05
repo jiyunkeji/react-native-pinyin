@@ -9,4 +9,7 @@ export default class PinyinUtils {
   static toPinyin(str: string, sperator: string = ' '): Promise<string> {
     return PinyinModule.toPinyin(str, sperator);
   }
+  static toAgoraUid(rtcUid: string): Promise<number> {
+    return PinyinModule.toAgoraUid(rtcUid);
+  }
 }

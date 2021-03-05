@@ -38,6 +38,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+import static java.lang.Integer.parseInt;
+
 public class PinyinModule extends ReactContextBaseJavaModule{
 
   public   static  final  String Key_Pref = "Pinyin";
@@ -77,6 +79,16 @@ public class PinyinModule extends ReactContextBaseJavaModule{
     try {
      String result =  Pinyin.toPinyin(str,separator);
       result = result.toLowerCase();
+      promise.resolve(result);
+    } catch (Exception exception) {
+      promise.reject(exception);
+    }
+  }
+
+  @ReactMethod
+  public void toAgoraUid(String rtcUid,Promise promise) {
+    try {
+      int result = Convert.Companion.agoraId(rtcUid);
       promise.resolve(result);
     } catch (Exception exception) {
       promise.reject(exception);
